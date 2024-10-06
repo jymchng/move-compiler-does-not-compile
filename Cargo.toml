@@ -14,28 +14,43 @@ readme = "README.md"
 exclude = ["target", "tests/tmp"]
 include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
 
+[[bin]]
+name = "hello-world"
+path = "src/bins/hello-world/main.rs"
+
 [dependencies]
-tokio = "1.26.0"
-anyhow = "1.0.69"
-serde = { version = "1.0.159", features = ["derive"] }
-lazy_static = "1.4.0"
-text-colorizer = "1.0.0"
-fastcrypto = "0.1.4"
-base64 = "0.21.0"
-futures = "0.3.28"
-itertools = "0.10.5"
-rayon = "1.7.0"
-bcs = "0.1.5"
-chrono = "0.4.26"
+serde = { version = "^1.0", features = ["derive"] }
+serde_json = "^1.0"
+regex = "^1.5"
+log = "^0.4"
+env_logger = "^0.9"
+anyhow = "^1.0"
+thiserror = "^1.0"
+clap = { version = "^3.0", features = ["derive"] }
+toml = "^0.5"
+lazy_static = "^1.4"
+proc-macro2 = "^1.0.86"
+quote = "^1.0.36"
+syn = "^2.0.71"
+tokio = { version = "^1.0" }
+tonic = "^0.12"
 
-[profile.dev]
-opt-level = 1
-debug = true
-overflow-checks = true
-lto = false
+# Tried { git = "https://github.com/MystenLabs/sui", tag = "mainnet-v1.34.2" } doesn't work!
+# Should always use `branch`, e.g. `branch = "main"` to specify the `sui` crates!
+sui-types = { git = "https://github.com/MystenLabs/sui", branch = "main" }
+# sui-sdk = { git = "https://github.com/MystenLabs/sui", branch = "main" }
+# sui-keys = { git = "https://github.com/MystenLabs/sui", branch = "main"  }
+# sui-json = { git = "https://github.com/MystenLabs/sui", branch = "main"  }
 
-[profile.release]
-opt-level = 3
-debug = false
-overflow-checks = true
-lto = true
+# Comment or Uncomment them doesn't matter, still cannot compile
+# [profile.dev]
+# opt-level = 1
+# debug = true
+# overflow-checks = true
+# lto = false
+
+# [profile.release]
+# opt-level = 3
+# debug = false
+# overflow-checks = true
+# lto = true
