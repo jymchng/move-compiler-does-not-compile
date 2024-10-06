@@ -1,0 +1,41 @@
+[package]
+name = "rust-no-workspace-template"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A library for Sui literals"
+license = "MIT"
+repository = "https://github.com/yourusername/rust-no-workspace-template"
+documentation = "https://docs.rs/rust-no-workspace-template"
+homepage = "https://yourwebsite.com/rust-no-workspace-template"
+keywords = ["literals", "proc-macro"]
+categories = ["development-tools", "macros"]
+readme = "README.md"
+exclude = ["target", "tests/tmp"]
+include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
+
+[dependencies]
+tokio = "1.26.0"
+anyhow = "1.0.69"
+serde = { version = "1.0.159", features = ["derive"] }
+lazy_static = "1.4.0"
+text-colorizer = "1.0.0"
+fastcrypto = "0.1.4"
+base64 = "0.21.0"
+futures = "0.3.28"
+itertools = "0.10.5"
+rayon = "1.7.0"
+bcs = "0.1.5"
+chrono = "0.4.26"
+
+[profile.dev]
+opt-level = 1
+debug = true
+overflow-checks = true
+lto = false
+
+[profile.release]
+opt-level = 3
+debug = false
+overflow-checks = true
+lto = true
